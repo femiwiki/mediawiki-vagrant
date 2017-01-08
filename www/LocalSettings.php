@@ -46,6 +46,10 @@ $wgEnotifUserTalk = true;
 $wgEmergencyContact = "__WIKI_ADMIN_EMAIL__";
 $wgPasswordSender = "__WIKI_ADMIN_EMAIL__";
 $wgDefaultUserOptions['numberheadings'] = 1;
+$wgAllowUserCss = true;
+$wgAllowUserJs = true;
+$wgAllowExternalImages = true;
+$wgAllowImageTag = true;
 
 # Restbase
 $wgVirtualRestConfig['modules']['restbase'] = array(
