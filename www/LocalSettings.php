@@ -64,13 +64,93 @@ $wgVirtualRestConfig['modules']['restbase'] = array(
 );
 
 # Extensions
+## BetaFeatures
+wfLoadExtension( 'BetaFeatures' );
+
+## Cite
+wfLoadExtension( 'Cite' );
+
+## CodeEditor
+wfLoadExtension( 'CodeEditor' );
+$wgCodeEditorEnableCore = true;
+$wgScribuntoUseCodeEditor = true;
+$wgScribuntoUseGeSHi = true;
+
+## Description2
+require_once "$IP/extensions/Description2/Description2.php";
+
+## Echo
+require_once "$IP/extensions/Echo/Echo.php";
+
+## EmbedVideo
+wfLoadExtension( 'EmbedVideo' );
+
+## GoogleRichCards
+require_once "$IP/extensions/GoogleRichCards/GoogleRichCards.php";
+
+## Flow
+require_once "$IP/extensions/Flow/Flow.php";
+$wgFlowEditorList = array( 'visualeditor', 'none' );
+$wgFlowContentFormat = 'html';
+$wgNamespaceContentModels[NS_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_USER_TALK] = 'flow-board';
+
+## OpenGraphMeta
+require_once( "$IP/extensions/OpenGraphMeta/OpenGraphMeta.php" );
+
+## ParserFunction
+wfLoadExtension( 'ParserFunctions' );
+$wgPFEnableStringFunctions = true;
+
+## Renameuser
+wfLoadExtension( 'Renameuser' );
+
+## Scribunto
+require_once "$IP/extensions/Scribunto/Scribunto.php";
+$wgScribuntoDefaultEngine = 'luastandalone';
+$wgScribuntoUseGeSHi = true;
+$wgScribuntoUseCodeEditor = true;
+
+## SimpleMathJax
+require_once "$IP/extensions/SimpleMathJax/SimpleMathJax.php";
+
+## SyntaxHighlight_GeSHi
+wfLoadExtension( 'SyntaxHighlight_GeSHi' );
+
+## Thanks
+wfLoadExtension( 'Thanks' );
+
+## UserMerge
+wfLoadExtension( 'UserMerge' );
+
 ## VisualEditor
 wfLoadExtension( 'VisualEditor' );
-$wgVisualEditorSupportedSkins[] = 'femiwiki';
+$wgVisualEditorAvailableNamespaces = array(
+    NS_SPECIAL => true,
+    NS_MAIN => true,
+    NS_TALK => true,
+    NS_USER => true,
+    NS_USER_TALK => true,
+    NS_PROJECT => true,
+    NS_PROJECT_TALK => true,
+    NS_HELP => true,
+    NS_HELP_TALK => true,
+    "_merge_strategy" => "array_plus",
+);
 $wgDefaultUserOptions['visualeditor-enable'] = 1;
 $wgHiddenPrefs[] = 'visualeditor-enable';
 $wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;
-#$wgVisualEditorRestbaseURL = 'http://__DOMAIN__:7231/__DOMAIN__/v1/page/html/';
-#$wgVisualEditorFullRestbaseURL = 'http://__DOMAIN__:7231/__DOMAIN__/';
+$wgVirtualRestConfig['modules']['parsoid'] = array(
+    'url' => 'http://__PARSOID_DOMAIN__:8142',
+    'domain' => '__DOMAIN__',
+    'prefix' => '__DOMAIN__',
+);
+
+## WikiEditor
+wfLoadExtension( 'WikiEditor' );
+$wgDefaultUserOptions['usebetatoolbar'] = 1;
+$wgDefaultUserOptions['usebetatoolbar-cgd'] = 1;
+$wgDefaultUserOptions['wikieditor-preview'] = 1;
+$wgDefaultUserOptions['wikieditor-publish'] = 1;
 
 ?>

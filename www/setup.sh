@@ -24,9 +24,12 @@ sudo apt-get install -y --allow-downgrades --allow-remove-essential --allow-chan
     git \
     imagemagick \
     libapache2-mod-php7.0 \
+    liblua5.1-dev \
+    lua5.1 \
     memcached \
     php7.0 \
     php7.0-curl \
+    php7.0-dev \
     php7.0-intl \
     php7.0-mbstring \
     php7.0-mysql \
@@ -107,6 +110,125 @@ sudo sed -i s/__WIKI_ID__/${WIKI_ID}/g /var/www/${DOMAIN}/LocalSettings.php
 sudo sed -i s/__WIKI_ADMIN_EMAIL__/${WIKI_ADMIN_EMAIL}/g /var/www/${DOMAIN}/LocalSettings.php
 
 # Install mediawiki extensions
+## BetaFeatures
+if [ ! -f /opt/${WIKI_ID}_download/BetaFeatures.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/BetaFeatures-REL1_28-2e9ea84.tar.gz \
+        -O /opt/${WIKI_ID}_download/BetaFeatures.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/BetaFeatures.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
+## CodeEditor
+if [ ! -f /opt/${WIKI_ID}_download/CodeEditor.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/CodeEditor-REL1_28-99e6e25.tar.gz \
+        -O /opt/${WIKI_ID}_download/CodeEditor.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/CodeEditor.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
+## Description2
+if [ ! -f /opt/${WIKI_ID}_download/Description2.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/Description2-REL1_28-2f07438.tar.gz \
+        -O /opt/${WIKI_ID}_download/Description2.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/Description2.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
+## Echo
+if [ ! -f /opt/${WIKI_ID}_download/Echo.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/Echo-REL1_28-f55bdd9.tar.gz \
+        -O /opt/${WIKI_ID}_download/Echo.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/Echo.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
+## EmbedVideo
+if [ ! -f /opt/${WIKI_ID}_download/EmbedVideo.zip ]; then
+    sudo wget -nv \
+        https://github.com/HydraWiki/mediawiki-embedvideo/archive/v2.5.2.zip \
+        -O /opt/${WIKI_ID}_download/EmbedVideo.zip
+    sudo unzip /opt/${WIKI_ID}_download/EmbedVideo.zip -d /opt/${WIKI_ID}_download/
+    sudo mv /opt/${WIKI_ID}_download/mediawiki-embedvideo-2.5.2 /var/www/${DOMAIN}/extensions/EmbedVideo
+fi
+
+# Flow
+if [ ! -f /opt/${WIKI_ID}_download/Flow.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/Flow-REL1_28-bc94b5d.tar.gz \
+        -O /opt/${WIKI_ID}_download/Flow.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/Flow.tar.gz -C /var/www/${DOMAIN}/extensions
+    sudo php /var/www/${DOMAIN}/maintenance/populateContentModel.php --ns=all --table=page
+    sudo php /var/www/${DOMAIN}/maintenance/populateContentModel.php --ns=all --table=revision
+    sudo php /var/www/${DOMAIN}/maintenance/populateContentModel.php --ns=all --table=archive
+    sudo php /var/www/${DOMAIN}/extensions/Flow/maintenance/FlowUpdateRevContentModelFromOccupyPages.php
+fi
+
+## GoogleRichCards
+if [ ! -f /opt/${WIKI_ID}_download/GoogleRichCards.zip ]; then
+    sudo wget -nv \
+        https://github.com/teran/mediawiki-GoogleRichCards/archive/master.zip \
+        -O /opt/${WIKI_ID}_download/GoogleRichCards.zip
+    sudo unzip /opt/${WIKI_ID}_download/GoogleRichCards.zip -d /opt/${WIKI_ID}_download/
+    sudo mv /opt/${WIKI_ID}_download/mediawiki-GoogleRichCards-master /var/www/${DOMAIN}/extensions/GoogleRichCards
+fi
+
+## OpenGraphMeta
+if [ ! -f /opt/${WIKI_ID}_download/OpenGraphMeta.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/OpenGraphMeta-REL1_28-97bcca1.tar.gz \
+        -O /opt/${WIKI_ID}_download/OpenGraphMeta.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/OpenGraphMeta.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
+## ParserFunctions
+if [ ! -f /opt/${WIKI_ID}_download/ParserFunctions.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/ParserFunctions-REL1_28-1cb91f1.tar.gz \
+        -O /opt/${WIKI_ID}_download/ParserFunctions.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/ParserFunctions.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
+## Renameuser
+if [ ! -f /opt/${WIKI_ID}_download/Renameuser.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/Renameuser-REL1_28-f728deb.tar.gz \
+        -O /opt/${WIKI_ID}_download/Renameuser.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/Renameuser.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
+## Scribunto
+if [ ! -f /opt/${WIKI_ID}_download/Scribunto.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/Scribunto-REL1_28-a665621.tar.gz \
+        -O /opt/${WIKI_ID}_download/Scribunto.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/Scribunto.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
+## SimpleMathJax
+if [ ! -f /opt/${WIKI_ID}_download/SimpleMathJax.zip ]; then
+    sudo wget -nv \
+        https://github.com/jmnote/SimpleMathJax/archive/master.zip \
+        -O /opt/${WIKI_ID}_download/SimpleMathJax.zip
+    sudo unzip /opt/${WIKI_ID}_download/SimpleMathJax.zip -d /opt/${WIKI_ID}_download/
+    sudo mv /opt/${WIKI_ID}_download/SimpleMathJax-master /var/www/${DOMAIN}/extensions/SimpleMathJax
+fi
+
+## Thanks
+if [ ! -f /opt/${WIKI_ID}_download/Thanks.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/Thanks-REL1_28-9a79baa.tar.gz \
+        -O /opt/${WIKI_ID}_download/Thanks.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/Thanks.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
+## UserMerge
+if [ ! -f /opt/${WIKI_ID}_download/UserMerge.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/UserMerge-REL1_28-55971e5.tar.gz \
+        -O /opt/${WIKI_ID}_download/UserMerge.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/UserMerge.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
 ## VisualEditor
 if [ ! -f /opt/${WIKI_ID}_download/VisualEditor.tar.gz ]; then
     sudo wget -nv \
@@ -114,6 +236,18 @@ if [ ! -f /opt/${WIKI_ID}_download/VisualEditor.tar.gz ]; then
         -O /opt/${WIKI_ID}_download/VisualEditor.tar.gz
     sudo tar -xzf /opt/${WIKI_ID}_download/VisualEditor.tar.gz -C /var/www/${DOMAIN}/extensions
 fi
+
+## WikiEditor
+if [ ! -f /opt/${WIKI_ID}_download/WikiEditor.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/WikiEditor-REL1_28-ff440d6.tar.gz \
+        -O /opt/${WIKI_ID}_download/WikiEditor.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/WikiEditor.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
+## Run update script
+sudo chown -R www-data:www-data /var/www/${DOMAIN}/extensions
+sudo php /var/www/${DOMAIN}/maintenance/update.php --quick
 
 # Copy static files
 sudo --user=www-data cp ${SCRIPTDIR}/wwwroot/* /var/www/${DOMAIN}/
