@@ -125,6 +125,7 @@ wfLoadExtension( 'UserMerge' );
 
 ## VisualEditor
 wfLoadExtension( 'VisualEditor' );
+$wgVisualEditorSupportedSkins[] = 'femiwiki';
 $wgVisualEditorAvailableNamespaces = array(
     NS_SPECIAL => true,
     NS_MAIN => true,
@@ -153,4 +154,8 @@ $wgDefaultUserOptions['usebetatoolbar-cgd'] = 1;
 $wgDefaultUserOptions['wikieditor-preview'] = 1;
 $wgDefaultUserOptions['wikieditor-publish'] = 1;
 
+# Femiwiki specifics
+## Skin
+$wgDefaultSkin = "femiwiki";
+wfLoadSkin("Femiwiki");
 ?>

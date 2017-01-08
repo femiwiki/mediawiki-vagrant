@@ -252,6 +252,14 @@ sudo php /var/www/${DOMAIN}/maintenance/update.php --quick
 # Copy static files
 sudo --user=www-data cp ${SCRIPTDIR}/wwwroot/* /var/www/${DOMAIN}/
 
+# Copy femiwiki skin
+if [ ! -d /var/www/${DOMAIN}/skins/Femiwiki ]; then
+    sudo git clone https://github.com/femiwiki/skin.git /var/www/${DOMAIN}/skins/Femiwiki
+fi
+cd /var/www/${DOMAIN}/skins/Femiwiki
+sudo git pull
+cd -
+
 # Install restbase
 if [ ! -d /opt/${WIKI_ID}/restbase ]; then
     sudo git clone https://github.com/wikimedia/restbase.git /opt/${WIKI_ID}/restbase
