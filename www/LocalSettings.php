@@ -184,10 +184,14 @@ $wgGroupPermissions['user']['edit'] = true;
 $wgGroupPermissions['seeder']['edit'] = true;
 $wgGroupPermissions['bureaucrat']['edit'] = true;
 
-## Copyright
+## Copyrights
 $wgRightsPage = "페미위키:저작권";
 $wgRightsUrl = "https://creativecommons.org/licenses/by-sa/4.0/deed.ko";
 $wgRightsText = "CCL 저작자표시-동일조건변경허락 4.0 국제 라이선스";
 $wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by-sa.png";
+
+## Misc.
+$wgShowExceptionDetails = ("__DOMAIN__" != "femiwiki.com");
+$wgDebugToolbar = ("__DOMAIN__" != "femiwiki.com");
 
 ?>
