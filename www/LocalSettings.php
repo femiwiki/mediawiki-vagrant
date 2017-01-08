@@ -27,6 +27,9 @@ $wgResourceLoaderMaxage = array(
 $wgMainCacheType = CACHE_ACCEL;
 $wgCacheDirectory = "/opt/__WIKI_ID__/cache";
 $wgUseFileCache = true;
+$wgMemCachedServers = [
+    "127.0.0.1:11000"
+];
 
 # Upload
 $wgEnableUploads = true;

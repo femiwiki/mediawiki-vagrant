@@ -24,6 +24,7 @@ sudo apt-get install -y --allow-downgrades --allow-remove-essential --allow-chan
     git \
     imagemagick \
     libapache2-mod-php7.0 \
+    memcached \
     php7.0 \
     php7.0-curl \
     php7.0-intl \
