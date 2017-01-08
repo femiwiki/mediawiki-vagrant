@@ -156,6 +156,34 @@ $wgDefaultUserOptions['wikieditor-publish'] = 1;
 
 # Femiwiki specifics
 ## Skin
+$wgLogo = "$wgResourceBasePath/skins/Femiwiki/images/logo-1200-630.png";
 $wgDefaultSkin = "femiwiki";
 wfLoadSkin("Femiwiki");
+
+## BBS
+define("NS_BBSFREE", 3902);
+define("NS_BBSFREE_TALK", 3903);
+$wgExtraNamespaces[NS_BBSFREE] = "자유게시판";
+$wgExtraNamespaces[NS_BBSFREE_TALK] = "자유게시판토론";
+$wgContentNamespaces[] = NS_BBSFREE;
+
+## Permission
+$wgGroupPermissions['*']['createaccount'] = true;
+$wgGroupPermissions['bureaucrat']['usermerge'] = true;
+$wgGroupPermissions['bureaucrat']['renameuser'] = true;
+$wgGroupPermissions['sysop']['deletelogentry'] = true;
+$wgGroupPermissions['sysop']['deleterevision'] = true;
+
+$wgGroupPermissions['*']['edit'] = false;
+
+$wgGroupPermissions['user']['edit'] = true;
+$wgGroupPermissions['seeder']['edit'] = true;
+$wgGroupPermissions['bureaucrat']['edit'] = true;
+
+## Copyright
+$wgRightsPage = "페미위키:저작권";
+$wgRightsUrl = "https://creativecommons.org/licenses/by-sa/4.0/deed.ko";
+$wgRightsText = "CCL 저작자표시-동일조건변경허락 4.0 국제 라이선스";
+$wgRightsIcon = "$wgResourceBasePath/resources/assets/licenses/cc-by-sa.png";
+
 ?>
