@@ -50,6 +50,7 @@ $wgAllowUserCss = true;
 $wgAllowUserJs = true;
 $wgAllowExternalImages = true;
 $wgAllowImageTag = true;
+$wgExternalLinkTarget = '_blank';
 
 # Restbase
 $wgVirtualRestConfig['modules']['restbase'] = array(
