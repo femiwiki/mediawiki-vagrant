@@ -259,6 +259,7 @@ fi
 cd /var/www/${DOMAIN}/skins/Femiwiki
 sudo git pull
 cd -
+sudo chown -R www-data:www-data /var/www/${DOMAIN}/skins/Femiwiki
 
 # Install restbase
 if [ ! -d /opt/${WIKI_ID}/restbase ]; then
