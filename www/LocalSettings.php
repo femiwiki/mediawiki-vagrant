@@ -90,9 +90,6 @@ require_once "$IP/extensions/Echo/Echo.php";
 ## EmbedVideo
 wfLoadExtension( 'EmbedVideo' );
 
-## GoogleRichCards
-require_once "$IP/extensions/GoogleRichCards/GoogleRichCards.php";
-
 ## Flow
 require_once "$IP/extensions/Flow/Flow.php";
 $wgFlowEditorList = array( 'visualeditor', 'none' );

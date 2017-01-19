@@ -163,15 +163,6 @@ if [ ! -f /opt/${WIKI_ID}_download/Flow.tar.gz ]; then
     sudo php /var/www/${DOMAIN}/extensions/Flow/maintenance/FlowUpdateRevContentModelFromOccupyPages.php
 fi
 
-## GoogleRichCards
-if [ ! -f /opt/${WIKI_ID}_download/GoogleRichCards.zip ]; then
-    sudo wget -nv \
-        https://github.com/teran/mediawiki-GoogleRichCards/archive/master.zip \
-        -O /opt/${WIKI_ID}_download/GoogleRichCards.zip
-    sudo unzip /opt/${WIKI_ID}_download/GoogleRichCards.zip -d /opt/${WIKI_ID}_download/
-    sudo mv /opt/${WIKI_ID}_download/mediawiki-GoogleRichCards-master /var/www/${DOMAIN}/extensions/GoogleRichCards
-fi
-
 ## OpenGraphMeta
 if [ ! -f /opt/${WIKI_ID}_download/OpenGraphMeta.tar.gz ]; then
     sudo wget -nv \
