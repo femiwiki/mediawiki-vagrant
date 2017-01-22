@@ -1,3 +1,4 @@
 .vagrant
 *.log
 www/wwwroot/LocalSettingsSecure.php
+.DS_Store
