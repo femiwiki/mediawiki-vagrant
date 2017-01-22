@@ -97,6 +97,12 @@ $wgFlowContentFormat = 'html';
 $wgNamespaceContentModels[NS_TALK] = 'flow-board';
 $wgNamespaceContentModels[NS_USER_TALK] = 'flow-board';
 
+## HTMLTags
+require_once "$IP/extensions/HTMLTags/HTMLTags.php";
+$wgHTMLTagsAttributes['a'] = array( 'href', 'class', 'itemprop' );
+$wgHTMLTagsAttributes['link'] = array('href', 'itemprop');
+$wgHTMLTagsAttributes['meta'] = array('content', 'itemprop');
+
 ## OpenGraphMeta
 require_once( "$IP/extensions/OpenGraphMeta/OpenGraphMeta.php" );
 

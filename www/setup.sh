@@ -163,6 +163,15 @@ if [ ! -f /opt/${WIKI_ID}_download/Flow.tar.gz ]; then
     sudo php /var/www/${DOMAIN}/extensions/Flow/maintenance/FlowUpdateRevContentModelFromOccupyPages.php
 fi
 
+## HTMLTags
+if [ ! -f /opt/${WIKI_ID}_download/HTMLTags.zip ]; then
+    sudo wget -nv \
+        https://github.com/wikimedia/mediawiki-extensions-HTMLTags/archive/c09635d70857ba47b18bc5aed1289b5f9f4d9bf6.zip \
+        -O /opt/${WIKI_ID}_download/HTMLTags.zip
+    sudo unzip /opt/${WIKI_ID}_download/HTMLTags.zip -d /opt/${WIKI_ID}_download/
+    sudo mv /opt/${WIKI_ID}_download/mediawiki-extensions-HTMLTags-c09635d70857ba47b18bc5aed1289b5f9f4d9bf6 /var/www/${DOMAIN}/extensions/HTMLTags
+fi
+
 ## OpenGraphMeta
 if [ ! -f /opt/${WIKI_ID}_download/OpenGraphMeta.tar.gz ]; then
     sudo wget -nv \
