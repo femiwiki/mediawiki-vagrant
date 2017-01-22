@@ -1,0 +1,3 @@
+[submodule "www/skin"]
+	path = www/skin
+	url = git@github.com-suyooktang:femiwiki/skin.git
