@@ -91,11 +91,11 @@ require_once "$IP/extensions/Echo/Echo.php";
 wfLoadExtension( 'EmbedVideo' );
 
 ## Flow
-require_once "$IP/extensions/Flow/Flow.php";
-$wgFlowEditorList = array( 'visualeditor', 'none' );
-$wgFlowContentFormat = 'html';
-$wgNamespaceContentModels[NS_TALK] = 'flow-board';
-$wgNamespaceContentModels[NS_USER_TALK] = 'flow-board';
+#require_once "$IP/extensions/Flow/Flow.php";
+#$wgFlowEditorList = array( 'visualeditor', 'none' );
+#$wgFlowContentFormat = 'html';
+#$wgNamespaceContentModels[NS_TALK] = 'flow-board';
+#$wgNamespaceContentModels[NS_USER_TALK] = 'flow-board';
 
 ## HTMLTags
 require_once "$IP/extensions/HTMLTags/HTMLTags.php";

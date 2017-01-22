@@ -152,16 +152,16 @@ if [ ! -f /opt/${WIKI_ID}_download/EmbedVideo.zip ]; then
 fi
 
 # Flow
-if [ ! -f /opt/${WIKI_ID}_download/Flow.tar.gz ]; then
-    sudo wget -nv \
-        https://extdist.wmflabs.org/dist/extensions/Flow-REL1_28-bc94b5d.tar.gz \
-        -O /opt/${WIKI_ID}_download/Flow.tar.gz
-    sudo tar -xzf /opt/${WIKI_ID}_download/Flow.tar.gz -C /var/www/${DOMAIN}/extensions
-    sudo php /var/www/${DOMAIN}/maintenance/populateContentModel.php --ns=all --table=page
-    sudo php /var/www/${DOMAIN}/maintenance/populateContentModel.php --ns=all --table=revision
-    sudo php /var/www/${DOMAIN}/maintenance/populateContentModel.php --ns=all --table=archive
-    sudo php /var/www/${DOMAIN}/extensions/Flow/maintenance/FlowUpdateRevContentModelFromOccupyPages.php
-fi
+#if [ ! -f /opt/${WIKI_ID}_download/Flow.tar.gz ]; then
+#    sudo wget -nv \
+#        https://extdist.wmflabs.org/dist/extensions/Flow-REL1_28-bc94b5d.tar.gz \
+#        -O /opt/${WIKI_ID}_download/Flow.tar.gz
+#    sudo tar -xzf /opt/${WIKI_ID}_download/Flow.tar.gz -C /var/www/${DOMAIN}/extensions
+#    sudo php /var/www/${DOMAIN}/maintenance/populateContentModel.php --ns=all --table=page
+#    sudo php /var/www/${DOMAIN}/maintenance/populateContentModel.php --ns=all --table=revision
+#    sudo php /var/www/${DOMAIN}/maintenance/populateContentModel.php --ns=all --table=archive
+#    sudo php /var/www/${DOMAIN}/extensions/Flow/maintenance/FlowUpdateRevContentModelFromOccupyPages.php
+#fi
 
 ## HTMLTags
 if [ ! -f /opt/${WIKI_ID}_download/HTMLTags.zip ]; then
@@ -253,12 +253,6 @@ sudo php /var/www/${DOMAIN}/maintenance/update.php --quick
 sudo --user=www-data cp ${SCRIPTDIR}/wwwroot/* /var/www/${DOMAIN}/
 
 # Copy femiwiki skin
-#if [ ! -d /var/www/${DOMAIN}/skins/Femiwiki ]; then
-#    sudo git clone https://github.com/femiwiki/skin.git /var/www/${DOMAIN}/skins/Femiwiki
-#fi
-#cd /var/www/${DOMAIN}/skins/Femiwiki
-#sudo git pull
-#cd -
 sudo rm -rf /var/www/${DOMAIN}/skins/Femiwiki
 sudo cp -r ${SCRIPTDIR}/skin/Femiwiki /var/www/${DOMAIN}/skins/
 sudo chown -R www-data:www-data /var/www/${DOMAIN}/skins/Femiwiki
