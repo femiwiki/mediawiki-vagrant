@@ -102,7 +102,7 @@ require_once "$IP/extensions/HTMLTags/HTMLTags.php";
 $wgHTMLTagsAttributes['a'] = array( 'href', 'class', 'itemprop' );
 $wgHTMLTagsAttributes['link'] = array('href', 'itemprop');
 $wgHTMLTagsAttributes['meta'] = array('content', 'itemprop');
-$wgHTMLTagsAttributes['iframe'] = array('href', 'class');
+$wgHTMLTagsAttributes['iframe'] = array('src', 'class');
 
 ## OpenGraphMeta
 require_once( "$IP/extensions/OpenGraphMeta/OpenGraphMeta.php" );
