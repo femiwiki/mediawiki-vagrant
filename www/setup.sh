@@ -121,7 +121,7 @@ fi
 ## CategoryTree
 if [ ! -f /opt/${WIKI_ID}_download/CategoryTree.tar.gz ]; then
     sudo wget -nv \
-        https://extdist.wmflabs.org/dist/extensions/CategoryTree-REL1_27-b454f2c.tar.gz \
+        https://extdist.wmflabs.org/dist/extensions/CategoryTree-REL1_28-8242603.tar.gz \
         -O /opt/${WIKI_ID}_download/CategoryTree.tar.gz
     sudo tar -xzf /opt/${WIKI_ID}_download/CategoryTree.tar.gz -C /var/www/${DOMAIN}/extensions
 fi
