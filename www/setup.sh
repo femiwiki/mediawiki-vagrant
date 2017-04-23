@@ -118,6 +118,14 @@ if [ ! -f /opt/${WIKI_ID}_download/BetaFeatures.tar.gz ]; then
     sudo tar -xzf /opt/${WIKI_ID}_download/BetaFeatures.tar.gz -C /var/www/${DOMAIN}/extensions
 fi
 
+## CategoryTree
+if [ ! -f /opt/${WIKI_ID}_download/CategoryTree.tar.gz ]; then
+    sudo wget -nv \
+        https://extdist.wmflabs.org/dist/extensions/CategoryTree-REL1_27-b454f2c.tar.gz \
+        -O /opt/${WIKI_ID}_download/CategoryTree.tar.gz
+    sudo tar -xzf /opt/${WIKI_ID}_download/CategoryTree.tar.gz -C /var/www/${DOMAIN}/extensions
+fi
+
 ## CodeEditor
 if [ ! -f /opt/${WIKI_ID}_download/CodeEditor.tar.gz ]; then
     sudo wget -nv \

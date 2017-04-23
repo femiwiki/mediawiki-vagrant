@@ -72,6 +72,9 @@ $wgVirtualRestConfig['modules']['restbase'] = array(
 ## BetaFeatures
 wfLoadExtension( 'BetaFeatures' );
 
+## CategoryTree
+wfLoadExtension('CategoryTree');
+
 ## Cite
 wfLoadExtension( 'Cite' );
 
